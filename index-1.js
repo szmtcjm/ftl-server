@@ -6,7 +6,6 @@ var config = require('./lib/config');
 var ftl = require('./lib/ftl');
 var proxy = require('./lib/proxy');
 var mock = require('./lib/mock');
-var list = require('./lib/list');
 
 var app = express();
 
@@ -18,10 +17,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', list);
-app.use(ftl);
-app.use(proxy);
-app.use(mock);
+//根目录跳转到ftl
+app.get('/', function(req, res, next) {
+    res.redirect('/ftl');
+});
+
+app.use('/ftl', ftl);
+// app.use(proxy);
+// app.use(mock);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
