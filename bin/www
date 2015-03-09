@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../index');
+var app = require('../index-1');
 var debug = require('debug')('ftl-server:server');
 var http = require('http');
 // var config = require('../lib/config');
@@ -89,5 +89,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }

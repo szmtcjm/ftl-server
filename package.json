@@ -12,6 +12,7 @@
     "ejs": "^2.3.1",
     "es6-promise": "^2.0.1",
     "express": "~4.12.0",
+    "jade": "^1.9.2",
     "morgan": "~1.5.1",
     "object-assign": "^2.0.0",
     "serve-favicon": "~2.2.0",

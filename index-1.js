@@ -1,11 +1,12 @@
 var express = require('express');
 var logger = require('morgan');
-
+var path = require('path');
+var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var config = require('./lib/config');
 var ftl = require('./lib/ftl');
-var proxy = require('./lib/proxy');
-var mock = require('./lib/mock');
+// var proxy = require('./lib/proxy');
+// var mock = require('./lib/mock');
 
 var app = express();
 
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //根目录跳转到ftl
 app.get('/', function(req, res, next) {
-    res.redirect('/ftl');
+    res.redirect('/ftl/');
 });
 
 app.use('/ftl', ftl);

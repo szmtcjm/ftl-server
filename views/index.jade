@@ -1,5 +1,38 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title= title
+    style(type='text/css').
+      .container {
+        padding: 10px 50px;
+      }
+      .location {
+        padding-left: 40px;
+        background: #D9B3B3;
+        line-height: 30px;
+      }
+      .list {
+        padding-left: 0;
+      }
+      .list li {
+        list-style: none;
+        line-height: 30px;
+        padding-left: 30px;
+      }
+      .list li:nth-of-type(odd) {
+        background: #ddd;
+      }
+      .list li:nth-of-type(even) {
+        background: #F7F7F4;
+      }
+      a,a:link,a:visited {
+        color: #525252;
+      }
+  body
+    section.container
+      h3.location=location
+      ul.list
+        each file in files
+          li
+            a(href=file)=file
