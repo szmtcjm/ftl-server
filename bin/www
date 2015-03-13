@@ -3,19 +3,17 @@
 /**
  * Module dependencies.
  */
-
-var app = require('../index-1');
+var app = require('../app');
 var debug = require('debug')('ftl-server:server');
 var http = require('http');
-// var config = require('../lib/config');
+var config = require('../lib/config');
 
 
 /**
  * Get port from environment and store in Express.
  */
 
-// var port = normalizePort(config.port);
-var port = normalizePort('8000');
+var port = normalizePort(config.port);
 app.set('port', port);
 
 /**

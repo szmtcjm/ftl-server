@@ -1,6 +1,15 @@
 {
   "name": "ftl-server",
   "version": "0.0.1",
+  "description": "A tool for front end developers, which can parse freemarker template, mock api, reverse proxy",
+  "keywords": "freemarker mock proxy server tool",
+  "bugs": "http://github.com/szmtcjm/ftl-server/issues",
+  "license": "MIT",
+  "bin": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/szmtcjm/ftl-server"
+    },
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -12,8 +21,10 @@
     "ejs": "^2.3.1",
     "es6-promise": "^2.0.1",
     "express": "~4.12.0",
+    "iconv-lite": "^0.4.7",
     "jade": "^1.9.2",
     "morgan": "~1.5.1",
+    "node-watch": "^0.3.4",
     "object-assign": "^2.0.0",
     "serve-favicon": "~2.2.0",
     "yargs": "^3.4.5"
