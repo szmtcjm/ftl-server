@@ -33,8 +33,5 @@
     "name": "Chen jiangming",
     "email": "szmtcjm@126.com"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "directories": {}
 }
