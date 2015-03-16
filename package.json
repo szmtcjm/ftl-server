@@ -1,6 +1,6 @@
 {
   "name": "ftl-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tool for front end developers, which can parse freemarker template, mock api, reverse proxy",
   "keywords": "freemarker mock proxy server tool",
   "bugs": "http://github.com/szmtcjm/ftl-server/issues",
