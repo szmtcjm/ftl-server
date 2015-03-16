@@ -5,8 +5,8 @@
   "keywords": "freemarker mock proxy server tool",
   "bugs": "http://github.com/szmtcjm/ftl-server/issues",
   "license": "MIT",
-  "main": "./index.js",
-  "bin": "./index.js",
+  "main": "./bin/index.js",
+  "bin": "./bin/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/szmtcjm/ftl-server"
