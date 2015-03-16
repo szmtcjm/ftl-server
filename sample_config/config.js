@@ -1,8 +1,8 @@
 module.exports = {
-    base: 'E:\\20150228-origin-2\\20150228-origin-2\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl',
     'public': 'E:\\20150228-origin-2\\20150228-origin-2\\apache',
     port: '80',
     ftl: {
+        base: 'E:\\20150228-origin-2\\20150228-origin-2\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl',
         global: {
             
         },
@@ -29,7 +29,7 @@ module.exports = {
             },
             response: function(req, res) {
                 res.send({
-                    a:1,
+                    a:4,
                     b:2
                 });
             }
