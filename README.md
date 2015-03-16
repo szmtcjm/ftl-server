@@ -12,7 +12,7 @@ npm install ftl-server -g
 ftl-server -c ./config.js -p 8080
 ```
 
-ftl-server命令的选项不多，其中配置文件必须 `-c ./config.js`,可以通过`ftl-server help`查看帮助
+ftl-server命令的选项不多，其中配置文件必须 `-c ./config.js`, -p 服务的端口，默认8000, 可以通过`ftl-server help`查看帮助
 
 ## 配置文件
 
