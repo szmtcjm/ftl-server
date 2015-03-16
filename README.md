@@ -1,12 +1,12 @@
-#ftl-server
+# ftl-server
 ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后端接口，反向代理等功能。
 
-##安装
+## 安装
 
 ```bash
 npm install ftl-server -g
 ```
-##使用
+## 使用
 
 ```bash
 ftl-server -c ./config.js -p 8080
@@ -14,7 +14,7 @@ ftl-server -c ./config.js -p 8080
 
 ftl-server命令的选项不多，其中配置文件必须 `-c ./config.js`,可以通过`ftl-server help`查看帮助
 
-##配置文件
+## 配置文件
 
 配置文件是一个JSON或者export一个对象的module，配置文件配置所有功能。修改配置文件服务自动重启，下面是一个例子
 
@@ -62,12 +62,12 @@ module.exports = {
 }
 ```
 
-###全局配置字段
+### 全局配置字段
 
 * `public` 静态文件目录
 * `port` 本地服务端口
 
-###ftl
+### ftl
 
 `ftl`字段用来配置freemarker的解析，服务起来后访问根目录会列出base目录下的文件列表。
 
@@ -79,7 +79,7 @@ module.exports = {
 
 > 注意事项： freemarker用`<#assign>`定义的数据模型会屏蔽程序传入的数据模型，所以在dataModel.html中定义的数据模型会屏蔽这里定义的数据模型。  
 
-###mock
+### mock
 
 `mock`字段配置接口模拟，值是一数组，数组中的每个对象表示模拟一个请求。
 
@@ -91,6 +91,6 @@ module.exports = {
 * `header`其他响应头的配置
 * `response`响应内容。可以是字符串，对象，函数，其中函数的入参是req、res（express的中间件的入参），函数中可以自己响应结束请求，或者返回一个响应对象。
 
-###proxy
+### proxy
 
 反向代理的配置，待实现...
