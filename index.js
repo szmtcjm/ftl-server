@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var argv = require('./lib/argv');
 var fs = require('fs');
 var fork = require('child_process').fork;

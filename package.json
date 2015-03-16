@@ -5,6 +5,7 @@
   "keywords": "freemarker mock proxy server tool",
   "bugs": "http://github.com/szmtcjm/ftl-server/issues",
   "license": "MIT",
+  "main": "./index.js",
   "bin": "./index.js",
   "repository": {
     "type": "git",
@@ -27,5 +28,13 @@
     "serve-favicon": "~2.2.0",
     "yargs": "^3.4.5"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "author": {
+    "name": "Chen jiangming",
+    "email": "szmtcjm@126.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "directories": {}
 }
