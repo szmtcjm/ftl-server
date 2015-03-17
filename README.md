@@ -19,46 +19,42 @@ ftl-server命令的选项不多，其中配置文件必须 `-c ./config.js`, -p 
 配置文件是一个JSON或者export一个对象的module，配置文件配置所有功能。修改配置文件服务自动重启，下面是一个例子
 
 ```js
-module.exports = {    
-    'public': 'E:\\20150228-origin-2\\20150228-origin-2\\apache',
-    port: '80',
-    ftl: {
-        base: 'E:\\20150228-origin-2\\20150228-origin-2\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl',
-        global: {
-            
-        },
-        'productDetail_000008_new.ftl': function(req, res) {
-            return {
-                saleActivityMap: {
-                "000008": {
-                    activityStatus: 'actived'
-                }
-            }
-            }
-        }
+module.exports = {
+  'public': 'E:\\20150228-origin-2\\20150228-origin-2\\apache',
+  port: '80',
+  ftl: {
+    base: 'E:\\20150228-origin-2\\20150228-origin-2\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl',
+    global: {
 
     },
-    mock: [
-        {
-            url: '/request',
-            method: 'get',
-            status: '200',
-            delay: '',
-            contentType: '',
-            header: {
-
-            },
-            response: function(req, res) {
-                return { 
-                    a: 1,
-                    B: 2
-                }
-            }
+    'productDetail_000008_new.ftl': function(req, res) {
+      return {
+        saleActivityMap: {
+          "000008": {
+            activityStatus: 'actived'
+          }
         }
-    ],
-    proxy: {
-        '/get': ''
+      }
     }
+
+  },
+  mock: [{
+    url: '/request',
+    method: 'get',
+    status: '200',
+    header: {
+
+    },
+    response: function(req, res) {
+      return {
+        a: 1,
+        B: 2
+      }
+    }
+  }],
+  proxy: {
+    '/get': ''
+  }
 }
 ```
 

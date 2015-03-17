@@ -23,7 +23,7 @@ router.use(function(req, res, next) {
 
 router.use('/ftl/', ftl);
 router.use(mock);
-// app.use(proxy);
+// router.use(proxy);
 
 
 
@@ -35,17 +35,17 @@ router.use(function(req, res, next) {
 });
 
 //如果是ajax错误，返回json信息
-function xhrErrorHandler(err, req, res, next) {
+router.use(function(err, req, res, next) {
     res.status(err.status || 500);
     if (req.xhr) {
-      res.send({
-          message: err.message,
-          error: err
-      });
+        res.send({
+            message: err.message,
+            error: err
+        });
     } else {
-      next(err);
+        next(err);
     }
-}
+});
 
 // 其他错误, 404的话返回404页面
 router.use(function(err, req, res, next) {

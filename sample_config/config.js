@@ -22,17 +22,15 @@ module.exports = {
             url: '/request',
             method: 'get',
             status: '200',
-            delay: '',
-            contentType: '',
+            jsonp: true,
             header: {
 
             },
-            response: function(req, res) {
-                res.send({
-                    a:4,
-                    b:2
-                });
-            }
+            response: {
+                    a: 1,
+                    b: 5
+
+                }
         }
     ],
     proxy: {
