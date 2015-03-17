@@ -79,13 +79,16 @@ module.exports = {
 
 `mock`字段配置接口模拟，值是一数组，数组中的每个对象表示模拟一个请求。
 
-* `url`请求的path
-* `method`请求的方法，get/post等等,默认get
-* `status`请求的响应状态，默认200
-* `delay`请求响应的延迟
+* `url` 请求的path
+* `method` 请求的方法，get/post等等,默认get
+* `status` 请求的响应状态，默认200
+* `delay` 请求响应的延迟
 * `contentType` Content-Type响应头，默认application/json
-* `header`其他响应头的配置
-* `response`响应内容。可以是字符串，对象，函数，其中函数的入参是req、res（express的中间件的入参），函数中可以自己响应结束请求，或者返回一个响应对象。
+* `header` 其他响应头的配置
+* `jsonp` 该模拟是个jsonp。这个字段跟jQuery的jQuery.ajax([settings])中的设置字段jsonp是一个意思，默认的回调函数名字是`callback`，
+即加在请求url后面的`callback=?`。如果该字段值设为true，则用默认的`callback`；如果设为一个具体的值（string类型），比如`jsonpCallback`，
+则加在请求url后面的变为`jsonpCallback=?`
+* `response` 响应内容。可以是字符串，对象，函数，其中函数的入参是req、res（express的中间件的入参），函数中可以自己响应结束请求，或者返回一个响应对象。
 
 ### proxy
 
