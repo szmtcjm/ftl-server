@@ -10,7 +10,7 @@ var configPath = path.resolve(argv.c);
 var child = forkApp();
 
 //检测文件变化
-fs.watchFile(configPath, function(curr, prev) {
+fs.watchFile(configPath, { interval: 2000 }, function(curr, prev) {
     if (curr.mtime !== prev.mtine) {
         child && child.kill();
     }
