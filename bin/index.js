@@ -17,10 +17,13 @@ fs.watchFile(configPath, { interval: 2000 }, function(curr, prev) {
 })
 
 function forkApp() {
-    console.log('the ftl server starting');
     child = fork(path.join(__dirname, '..', 'app'), process.argv.slice(2));
-    child.on('exit', function() {
-        child = forkApp();
+    child.on('exit', function(code) {
+        if (code === null) {
+            child = forkApp();
+        } else if (code === 1) {
+            process.exit(1);
+        }
     });
     return child;
 }
