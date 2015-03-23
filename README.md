@@ -1,6 +1,6 @@
 # ftl-server
 
-[![Build Status](https://travis-ci.org/szmtcjm/ftl-server.svg?branch=dev)](https://travis-ci.org/szmtcjm/ftl-server)
+[![Build Status](https://travis-ci.org/szmtcjm/ftl-server.svg?branch=master)](https://travis-ci.org/szmtcjm/ftl-server)
 
 ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后端接口，反向代理等功能。 
 
