@@ -12,7 +12,7 @@
     "url": "https://github.com/szmtcjm/ftl-server"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R spec -r test/support/argv",
+    "test": "./node_modules/.bin/mocha -R spec -r test/support/argv"
   },
   "dependencies": {
     "body-parser": "~1.12.0",
