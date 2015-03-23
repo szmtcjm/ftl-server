@@ -15,7 +15,7 @@ router.use('/images', express.static(pathJoinPublic('images')));
 //根目录跳转到ftl
 router.use(function(req, res, next) {
     if (req.path === '/' || req.path === '/ftl') {
-        res.redirect(301, '/ftl/');
+        res.redirect(302, '/ftl/');
     } else {
         next();
     }
