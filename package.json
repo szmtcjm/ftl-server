@@ -13,7 +13,6 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec -r test/support/argv",
-    "test-cov": "istanbul cover ./node_modules/.bin/mocha -R dot -r test/support/argv"
   },
   "dependencies": {
     "body-parser": "~1.12.0",
