@@ -35,15 +35,16 @@
     "serve-favicon": "~2.2.0",
     "yargs": "^3.4.5"
   },
-  "preferGlobal": true,
-  "author": {
-    "name": "Chen jiangming",
-    "email": "szmtcjm@126.com"
-  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "istanbul": "^0.3.8",
     "mocha": "^2.2.1",
     "supertest": "^0.15.0"
+  },
+  "files": ["bin/", "lib/", "routes/", "sample_config/", "views/", "app.js", "README.md"],
+  "preferGlobal": true,
+  "author": {
+    "name": "Chen jiangming",
+    "email": "szmtcjm@126.com"
   }
 }

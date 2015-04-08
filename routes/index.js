@@ -5,23 +5,22 @@ var config = require('../lib/config');
 var ftl = require('../lib/ftl');
 var mock = require('../lib/mock');
 
-function pathJoinPublic(static) {
-    return path.join(config.public, static);
-}
-router.use('/js', express.static(pathJoinPublic('js')));
-router.use('/css', express.static(pathJoinPublic('css')));
-router.use('/images', express.static(pathJoinPublic('images')));
+//静态资源
+router.use(express.static(config.public));
 
 //根目录跳转到ftl
-router.use(function(req, res, next) {
-    if (req.path === '/' || req.path === '/ftl') {
-        res.redirect(302, '/ftl/');
-    } else {
-        next();
-    }
-});
+// router.use(function(req, res, next) {
+//     if (req.path === '/' || req.path === '/ftl') {
+//         res.redirect(302, '/ftl/');
+//     } else {
+//         next();
+//     }
+// });
 
-router.use('/ftl/', ftl);
+//ftl渲染
+router.use(ftl);
+
+
 router.use(mock);
 // router.use(proxy);
 
