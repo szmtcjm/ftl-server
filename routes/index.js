@@ -6,7 +6,7 @@ var ftl = require('../lib/ftl');
 var mock = require('../lib/mock');
 
 //静态资源
-router.use(express.static(config.public));
+router.use(express.static(config.public, {index: false}));
 
 //根目录跳转到ftl
 // router.use(function(req, res, next) {
@@ -23,8 +23,6 @@ router.use(ftl);
 
 router.use(mock);
 // router.use(proxy);
-
-
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {

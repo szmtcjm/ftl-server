@@ -21,9 +21,7 @@ app.use(routes);
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(config.port);
-app.set('port', port);
+app.set('port', config.port);
 
 /**
  * Create HTTP server.
@@ -35,29 +33,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(config.port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
