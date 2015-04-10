@@ -6,12 +6,14 @@ var ftl = require('../lib/ftl');
 var mock = require('../lib/mock');
 var proxy = require('../lib/proxy');
 
+//反向代理
+router.use(proxy); 
 //静态资源
 router.use(express.static(config.public, {index: false}));
-
-router.use(ftl);   //ftl渲染
-router.use(mock);  // api mock
-router.use(proxy); //反向代理
+//ftl渲染
+router.use(ftl);
+// api mock
+router.use(mock);
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {

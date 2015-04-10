@@ -49,11 +49,25 @@ describe('mock test', function() {
     });
 
     it('/mock/delay', function(done) {
+        var start = new Date();
         request.get('/mock/delay')
             .expect('Content-Type', 'application/json; charset=utf-8')
             .end(function(err, res) {
                 var json = JSON.parse(res.text);
                 expect(json).to.eql({'response': 'delay'});
+                expect(new Date() - start).to.be.greaterThan(1000);
+                done(err);
+            });
+    });
+
+    it('/mock/jsonp/delay', function(done) {
+        var start = new Date();
+        request.get('/mock/jsonp/delay')
+            .query({callback: 'call'})
+            .expect('Content-Type', 'text/javascript; charset=utf-8')
+            .end(function(err, res) {
+                expect(res.text).to.be('\/**\/ typeof call === \'function\' && call({"response":"jsonp"});');
+                expect(new Date() - start).to.be.greaterThan(1000);
                 done(err);
             });
     });

@@ -5,6 +5,7 @@ var app = require('../app');
 var request = supertest(app);
 var httpApp = require('./support/http.js');
 var httpsApp = require('./support/https.js');
+var redirect = require('./support/redirect.js');
 
 describe('proxy test', function() {
     describe('proxy test:http-GET', function() {
@@ -150,7 +151,7 @@ describe('proxy test', function() {
 
     describe('proxy test:https--GET', function() {
         before(function() {
-            httpsApp.startForPOST();
+            httpsApp.startForGET();
         });
 
         after(function() {
@@ -182,6 +183,24 @@ describe('proxy test', function() {
                 .expect(200)
                 .end(function(err, res) {
                     expect(res.text).to.be('a=1&b=2');
+                    done(err);
+                });
+        });
+    });
+
+    describe('redirect', function() {
+        before(function() {
+            redirect.start();
+        });
+        after(function() {
+            redirect.stop();
+        });
+
+        it('reponse text shoud be redirect', function(done) {
+            request.get('/proxy6')
+                .expect(200)
+                .end(function(err, res) {
+                    expect(res.text).to.be('redirect');
                     done(err);
                 });
         });

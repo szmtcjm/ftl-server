@@ -59,9 +59,19 @@ exports = module.exports = {
             method: 'get',
             delay: 1000,
             response: function(req, res) {
-                res.send({
+                return {
                     'response': 'delay'
-                });
+                }
+            }
+        }, {
+            url: '/mock/jsonp/delay',
+            method: 'get',
+            jsonp: true,
+            delay: 1000,
+            response: function(req, res) {
+                return {
+                    'response': 'jsonp'
+                };
             }
         }
 
@@ -85,11 +95,16 @@ exports.proxy.push({
 })
 
 exports.proxy.push({
-    path: '/proxy4',
-    target: 'http://localhost:3000/m'
+    path: '/proxy4/',
+    target: 'http://localhost:3000/m/'
 })
 
 exports.proxy.push({
     path: '/proxy5',
     target: 'https://localhost:3000/m'
+})
+
+exports.proxy.push({
+    path: '/proxy6',
+    target: 'http://localhost:3000/'
 })
