@@ -55,9 +55,11 @@ module.exports = {
       }
     }
   }],
-  proxy: {
-    '/get': ''
-  }
+  proxy: [{
+    path: '/proxy1',
+    target: 'http://localhost:3000'
+    } 
+  ]
 }
 ```
 
@@ -95,4 +97,24 @@ module.exports = {
 
 ### proxy
 
-反向代理的配置，待实现...
+`proxy`字段配置反向代理，也是一数组，数组每个对象表示一个反向代理的配置。该配置有一个规则：即，**实际访问的路径除去配置中的path后的路径，会添加到target后面，成为代理请求的路径。** 这样说可能不清楚，举个例子： 
+
+```js
+{
+  path: '/proxy',
+  target: 'http://localhost:3000'
+}
+```
+以上是其中一个配置，则：
+1. 只要匹配以`/proxy`开头, 都会反向代理请求，比如`/proxy`, `/proxy/`, `/proxy/w/r?p=1`等等
+2. 当访问`/proxy/w?a=1`的时候，代理请求的地址是`http://localhost:3000/w?a=1`。  
+
+
+下面是可配置字段的说明
+* `path` 表示需要反向代理的请求path
+* `target` 表示代理的目标地址
+* `host` 自定义请求`target`时请求头中的host字段，默认是`target`代表的host
+
+## License
+
+MIT
