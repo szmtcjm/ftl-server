@@ -1,7 +1,7 @@
 var path_join = require('path').join;
 
-module.exports = {
-    'public': path_join(__dirname, '..', 'public'),
+exports = module.exports = {
+    public: path_join(__dirname, '..', 'public'),
     port: '80',
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
@@ -65,8 +65,31 @@ module.exports = {
             }
         }
 
-    ],
-    proxy: {
-        '/get': ''
-    }
+    ]
 }
+
+exports.proxy = [];
+exports.proxy.push({
+    path: '/proxy1',
+    target: 'http://localhost:3000'
+})
+
+exports.proxy.push({
+    path: '/proxy2/',
+    target: 'http://localhost:3000/'
+})
+
+exports.proxy.push({
+    path: '/proxy3',
+    target: 'http://localhost:3000/m'
+})
+
+exports.proxy.push({
+    path: '/proxy4',
+    target: 'http://localhost:3000/m'
+})
+
+exports.proxy.push({
+    path: '/proxy5',
+    target: 'https://localhost:3000/m'
+})

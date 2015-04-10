@@ -3,7 +3,6 @@ var logger = require('morgan');
 var path = require('path');
 var http = require('http');
 var debug = require('debug')('ftl-server:server');
-var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var config = require('./lib/config');
 
@@ -14,8 +13,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(routes);
 
 /**

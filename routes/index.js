@@ -4,25 +4,14 @@ var router = express.Router('strict');
 var config = require('../lib/config');
 var ftl = require('../lib/ftl');
 var mock = require('../lib/mock');
+var proxy = require('../lib/proxy');
 
 //静态资源
 router.use(express.static(config.public, {index: false}));
 
-//根目录跳转到ftl
-// router.use(function(req, res, next) {
-//     if (req.path === '/' || req.path === '/ftl') {
-//         res.redirect(302, '/ftl/');
-//     } else {
-//         next();
-//     }
-// });
-
-//ftl渲染
-router.use(ftl);
-
-
-router.use(mock);
-// router.use(proxy);
+router.use(ftl);   //ftl渲染
+router.use(mock);  // api mock
+router.use(proxy); //反向代理
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {

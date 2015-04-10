@@ -22,7 +22,6 @@
     "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R dot -r test/support/argv"
   },
   "dependencies": {
-    "body-parser": "~1.12.0",
     "cookie-parser": "~1.3.4",
     "debug": "~2.1.1",
     "ejs": "^2.3.1",
@@ -41,7 +40,15 @@
     "mocha": "^2.2.1",
     "supertest": "^0.15.0"
   },
-  "files": ["bin/", "lib/", "routes/", "sample_config/", "views/", "app.js", "README.md"],
+  "files": [
+    "bin/",
+    "lib/",
+    "routes/",
+    "sample_config/",
+    "views/",
+    "app.js",
+    "README.md"
+  ],
   "preferGlobal": true,
   "author": {
     "name": "Chen jiangming",
