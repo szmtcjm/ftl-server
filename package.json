@@ -2,6 +2,7 @@
   "name": "ftl-server",
   "version": "0.3.0",
   "description": "A tool for front end developers, which can parse freemarker template, mock api, reverse proxy",
+  "preferGlobal": true,
   "keywords": [
     "freemarker",
     "mock",
@@ -51,7 +52,6 @@
     "app.js",
     "README.md"
   ],
-  "preferGlobal": true,
   "author": {
     "name": "Chen jiangming",
     "email": "szmtcjm@126.com"

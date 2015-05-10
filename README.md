@@ -12,17 +12,20 @@ npm install ftl-server -g
 ## 使用
 
 ```bash
-ftl-server -c ./config.js -p 8080
+ftl-server -c ./config.js -p 8080 
 ```
-ftl-server命令的选项不多，其中配置文件必须 `-c ./config.js`, -p 服务的端口，默认8000, 可以通过`ftl-server help`查看帮助
+or 
 
-## 更新
+```bash
+fs -c ./config.js -p 8080 
+```
 
-* `/`不会跳转到`/ftl/`
-* 增加反向代理功能
-* 修复bug
+ftl-server命令的选项不多，可以通过`ftl-server help`查看帮助
 
-
+* `-c, --config` 指定配置文件。但不是必需的, 如果没有指定，则寻找当前工作目录下的ftl.config.js作为配置文件
+* `-p, --port` 服务的端口，默认8000
+* `-l, --log` 配置打印日志，`-l no-static`: 不打印静态资源的请求; `-l no-error+no-static`: 不打印静态资源请求和freemarker错误日志
+* `-h, --help` 帮助
 
 ## 配置文件
 
@@ -72,7 +75,7 @@ module.exports = {
 
 ### 全局配置字段
 
-* `public` 静态文件目录
+* `public` 静态文件目录, 可以是一字符串，或者数组以指定多个静态目录
 * `port` 本地服务端口
 
 ### ftl
