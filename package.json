@@ -12,7 +12,10 @@
   "bugs": "http://github.com/szmtcjm/ftl-server/issues",
   "license": "MIT",
   "main": "./bin/index.js",
-  "bin": "./bin/index.js",
+  "bin": {
+    "ftl-server": "./bin/index.js",
+    "fs": "./bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/szmtcjm/ftl-server"

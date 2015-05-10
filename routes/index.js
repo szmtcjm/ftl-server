@@ -1,15 +1,28 @@
 var express = require('express');
 var path = require('path');
+var logger = require('morgan');
 var router = express.Router('strict');
 var config = require('../lib/config');
 var ftl = require('../lib/ftl');
 var mock = require('../lib/mock');
 var proxy = require('../lib/proxy');
 
+//静态资源
+if (config.log.static) {
+    router.use(logger('dev'));
+}
+if (!Array.isArray(config.public)) {
+    config.public = [config.public];
+}
+config.public.forEach(function(static) {
+    router.use(express.static(static, {index: false}));
+});
+
+if (!config.log.static) {
+    router.use(logger('dev'));
+}
 //反向代理
 router.use(proxy); 
-//静态资源
-router.use(express.static(config.public, {index: false}));
 //ftl渲染
 router.use(ftl);
 // api mock

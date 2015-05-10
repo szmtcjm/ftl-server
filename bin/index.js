@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
-var argv = require('../lib/argv');
+var configPath = require('../lib/config').configPath;
 var fs = require('fs');
 var fork = require('child_process').fork;
 var path = require('path');
-
-var configPath = path.resolve(argv.c);
 
 var child = forkApp();
 

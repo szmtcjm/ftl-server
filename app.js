@@ -1,5 +1,4 @@
 var express = require('express');
-var logger = require('morgan');
 var path = require('path');
 var http = require('http');
 var debug = require('debug')('ftl-server:server');
@@ -12,7 +11,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
 app.use(routes);
 
 /**
