@@ -11,9 +11,7 @@ var proxy = require('../lib/proxy');
 if (config.log.static) {
     router.use(logger('dev'));
 }
-if (!Array.isArray(config.public)) {
-    config.public = [config.public];
-}
+
 config.public.forEach(function(static) {
     router.use(express.static(static, {index: false}));
 });

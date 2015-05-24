@@ -4,39 +4,32 @@ var http = require('http');
 var debug = require('debug')('ftl-server:server');
 var routes = require('./routes/index');
 var config = require('./lib/config');
+var live = require('./lib/live');
 
 var app = express();
+var server = http.createServer(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// live reload
+app.use(live(server));
+
 app.use(routes);
 
-/**
- * Get port from environment and store in Express.
- */
+// set port
 var port = config.port;
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
 
-var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
+// listening
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Event listener for HTTP server "error" event.
- */
-
+// error
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -59,10 +52,7 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
+// listening handler
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
@@ -70,6 +60,5 @@ function onListening() {
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
-
 
 module.exports = app;
