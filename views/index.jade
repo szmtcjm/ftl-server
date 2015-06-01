@@ -19,6 +19,7 @@ html
         list-style: none;
         line-height: 30px;
         padding-left: 30px;
+        font-size: 14px;
       }
       .list li:nth-of-type(odd) {
         background: #ddd;
@@ -29,11 +30,51 @@ html
       a,a:link,a:visited {
         color: #525252;
       }
+      .title {
+        position: relative;
+      }
+      .qrcode {
+        position: absolute;
+        top: 5px;
+        right: 100px;
+      }
+      .qrcode-logo {
+        display:block;
+        width:20px;
+        height:20px;
+        background: url(dataUrl);
+      }
+      .qrcode-display {
+        display: none;
+      }
+      .qrcode:hover .qrcode-display{
+        display: block;
+      }
+      .qrcode:hover .qrcode-logo {
+        display: none;
+      }
+      .qrcode-display img {
+        cursor: none;
+      }
+      @media screen and max-width:640px {
+        .qrcode {
+          display: none;
+        }
+      }
     base(href=location)
 
   body
     section.container
-      h3.location=location
+      div.title
+        h2.location=location
+        div.qrcode
+          i.qrcode-logo
+          div.qrcode-display
+            img(src=dataUrl)
+            ul
+              each item in ips
+              li
+                a(href=item.url)=item.ip
       ul.list
         each file in files
           li
