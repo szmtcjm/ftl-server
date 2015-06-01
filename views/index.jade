@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width")
     title= title
     style(type='text/css').
       .container {
@@ -17,9 +18,9 @@ html
       }
       .list li {
         list-style: none;
-        line-height: 30px;
+        line-height: 40px;
         padding-left: 30px;
-        font-size: 14px;
+        font-size: 16px;
       }
       .list li:nth-of-type(odd) {
         background: #ddd;
@@ -35,17 +36,29 @@ html
       }
       .qrcode {
         position: absolute;
-        top: 5px;
-        right: 100px;
+        top: 0;
+        right: 70px;
+        background: white;
+      }
+      .qrcode:hover {
+        box-shadow: 1px 1px 3px #333;
       }
       .qrcode-logo {
         display:block;
-        width:20px;
-        height:20px;
-        background: url(dataUrl);
+        width:8px;
+        height:8px;
+        padding: 3px;
+        margin: 3px;
+        border: 4px solid;
+      }
+      .qrcode-logo div {
+        width: 100%;
+        height: 100%;
+        background: black;
       }
       .qrcode-display {
         display: none;
+        padding: 10px 20px;
       }
       .qrcode:hover .qrcode-display{
         display: block;
@@ -56,25 +69,29 @@ html
       .qrcode-display img {
         cursor: none;
       }
-      @media screen and max-width:640px {
+      @media only screen and (max-width:640px) {
         .qrcode {
           display: none;
         }
+        .container {
+          padding: 10px 0;
+        }
       }
     base(href=location)
-
   body
     section.container
       div.title
         h2.location=location
         div.qrcode
           i.qrcode-logo
+            div
           div.qrcode-display
             img(src=dataUrl)
+            p(style={color: '#590000'}) 切换ip->
             ul
               each item in ips
-              li
-                a(href=item.url)=item.ip
+                li
+                  a(href=item.url)=item.ip
       ul.list
         each file in files
           li
