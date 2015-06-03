@@ -8,7 +8,8 @@
     "mock",
     "proxy",
     "server",
-    "tool"
+    "tool",
+    "livereload"
   ],
   "bugs": "http://github.com/szmtcjm/ftl-server/issues",
   "license": "MIT",
