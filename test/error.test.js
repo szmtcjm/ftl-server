@@ -1,5 +1,7 @@
 var config = require('../lib/config');
 var expect = require('expect.js');
+var supertest = require('supertest');
+var app = require('../app');
 
 // describe.skip('test error', function() {
 //     describe('port 80', function() {

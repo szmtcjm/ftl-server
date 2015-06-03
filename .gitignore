@@ -1,6 +1,12 @@
 node_modules/
-.idea/
-*~
 npm-debug.log
 
+.idea/
+
 coverage
+
+typings
+
+*~
+
+leakCheck.js

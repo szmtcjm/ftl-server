@@ -4,7 +4,7 @@ var app = require('../app');
 
 var request = supertest(app);
 
-describe('mock test', function() {
+describe('mock', function() {
     it('/mock/json', function(done) {
         request.get('/mock/json')
             .expect('Content-Type', 'application/json; charset=utf-8')
@@ -70,5 +70,15 @@ describe('mock test', function() {
                 expect(new Date() - start).to.be.greaterThan(1000);
                 done(err);
             });
+    });
+    
+    it('should success mock when given config path is a full href', function(done) {
+        request.get('/mock/url')
+            .type('text')
+            .expect(200)
+            .expect(function(res) {
+                expect(res.text).to.be('success');
+            })
+            .end(done);
     });
 });

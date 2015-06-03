@@ -3,6 +3,7 @@ var path_join = require('path').join;
 exports = module.exports = {
     public: path_join(__dirname, '..', 'public'),
     port: '80',
+    hot: true,
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
         global: {
@@ -18,7 +19,7 @@ exports = module.exports = {
         }
     },
     mock: [{
-            url: '/mock/json',
+            path: '/mock/json',
             method: 'get',
             status: '200',
             header: {
@@ -29,7 +30,7 @@ exports = module.exports = {
                 b: 5
             }
         }, {
-            url: '/mock/function',
+            path: '/mock/function',
             method: 'post',
             response: function(req, res) {
                 return {
@@ -38,7 +39,7 @@ exports = module.exports = {
             }
 
         }, {
-            url: '/mock/send',
+            path: '/mock/send',
             method: 'post',
             response: function(req, res) {
                 res.send({
@@ -55,7 +56,7 @@ exports = module.exports = {
                 };
             }
         }, {
-            url: '/mock/delay',
+            path: '/mock/delay',
             method: 'get',
             delay: 1000,
             response: function(req, res) {
@@ -64,7 +65,7 @@ exports = module.exports = {
                 }
             }
         }, {
-            url: '/mock/jsonp/delay',
+            path: '/mock/jsonp/delay',
             method: 'get',
             jsonp: true,
             delay: 1000,
@@ -73,9 +74,10 @@ exports = module.exports = {
                     'response': 'jsonp'
                 };
             }
-        }
-
-    ]
+        }, {
+            path: 'https://baidu.com/mock/url?a=1',
+            response: 'success'
+        }]
 }
 
 exports.proxy = [];
