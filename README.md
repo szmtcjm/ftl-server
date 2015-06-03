@@ -4,6 +4,14 @@
 
 ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后端接口，反向代理等功能。 
 
+## 特性
+
+* 解析freemarker模板
+* 静态资源服务
+* mock请求
+* 代理请求
+* livereload
+
 ## 安装
 
 ```bash
@@ -94,7 +102,7 @@ module.exports = {
 
 `mock`字段配置接口模拟，值是一数组，数组中的每个对象表示模拟一个请求。
 
-* `url` 请求的path
+* `path` 请求的path, 本来应该是严格的路由path(不包含querystring), 如果提供除path外的url的其他部分则会忽略。原来这个字段叫`url`,已废弃
 * `method` 请求的方法，get/post等等,默认get
 * `status` 请求的响应状态，默认200
 * `delay` 请求响应的延迟

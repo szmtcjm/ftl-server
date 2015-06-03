@@ -47,7 +47,7 @@ html
         display:block;
         width:8px;
         height:8px;
-        padding: 3px;
+        padding: 4px;
         margin: 3px;
         border: 4px solid;
       }
@@ -69,6 +69,20 @@ html
       .qrcode-display img {
         cursor: none;
       }
+      .qrcode-display dd {
+        margin-left: 25px;
+      }
+      .qrcode-display dt {
+        margin-bottom: 15px;
+      }
+      .qrcode-display dd a {
+        font-size: 14px;
+        color: #FF742C;
+      }
+      .qrcode-display dd a:hover {
+        color: white;
+        background: #2CA7FF;
+      }
       @media only screen and (max-width:640px) {
         .qrcode {
           display: none;
@@ -87,10 +101,10 @@ html
             div
           div.qrcode-display
             img(src=dataUrl)
-            p(style={color: '#590000'}) 切换ip->
-            ul
+            dl
+              dt(style={color: '#888080', 'font-size': '14px'}) 切换IP:
               each item in ips
-                li
+                dd
                   a(href=item.url)=item.ip
       ul.list
         each file in files
