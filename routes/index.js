@@ -13,9 +13,13 @@ if (config.log.static) {
 }
 
 config.public.forEach(function(static) {
-    router.use(express.static(static, {index: false}));
+    router.use(express.static(static, {index: false, setHeaders: function(res, path) {
+        if (/\.(ttf|ttc|otf|eot|woff|svg)$/.test(path)) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+        }
+    }}));
 });
-
+    
 if (!config.log.static) {
     router.use(logger('dev'));
 }
