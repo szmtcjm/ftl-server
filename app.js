@@ -1,10 +1,8 @@
 var express = require('express');
 var path = require('path');
 var http = require('http');
-var debug = require('debug')('ftl-server:server');
-var routes = require('./routes/index');
+var logger = require('morgan');
 var config = require('./lib/config');
-var live = require('./lib/live');
 
 var app = express();
 var server = http.createServer(app);
@@ -13,16 +11,52 @@ var server = http.createServer(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// 日志
+app.use(require('./lib/logger'));
 // live reload
-app.use(live(server));
+app.use(require('./lib/live')(server));
+// 静态资源
+app.use(require('./lib/static'));
+//反向代理
+app.use(require('./lib/proxy')); 
+//ftl渲染
+app.use(require('./lib/ftl'));
+// api mock
+app.use(require('./lib/mock'));
 
-app.use(routes);
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+//如果是ajax错误，返回json信息
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    if (req.xhr) {
+        res.send({
+            message: err.message,
+            error: err
+        });
+    } else {
+        next(err);
+    }
+});
+
+// 其他错误, 404的话返回404页面
+app.use(function(err, req, res, next) {
+    err.status = err.status || 500;
+    res.status(err.status);
+    res.render('error', {
+        message: err.message,
+        error: err
+    });
+});
 
 // set port
 var port = config.port;
 app.set('port', port);
-
-
 
 // listening
 server.listen(port);
@@ -58,7 +92,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('Listening on ' + bind);
+  console.log('Start ftl-server listening on ' + bind);
 }
 
 module.exports = app;

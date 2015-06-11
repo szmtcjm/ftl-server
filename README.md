@@ -30,11 +30,12 @@ fs -c ./config.js -p 8080
 
 ftl-server命令的选项不多，可以通过`ftl-server help`查看帮助
 
-* `-c, --config` 指定配置文件。但不是必需的, 如果没有指定，则寻找当前工作目录下的ftl.config.js作为配置文件
+* `-c, --config` 指定配置文件。但不是必需的, 如果没有指定，则寻找当前工作目录下的`ftl.config.js`作为配置文件
 * `-p, --port` 服务的端口，默认8000
-* `-l, --log` 配置打印日志，`-l no-static`: 不打印静态资源的请求; `-l no-error+no-static`: 不打印静态资源请求和freemarker错误日志
-* `--hot` 开启livereload
+* `-l, --log` 配置打印日志，指定要显示的日志，可以指定多个。比如`-l mock proxy error`表示只显示mock，proxy和error日志。默认为`-l all`，表示显示所有日志
+* `--hot` 开启livereload；开启后修改css会自动更新页面的样式，修改ftl/js/图片等会自动刷新页面
 * `-h, --help` 帮助
+* `-v, --version` 显示版本号
 
 ## 配置文件
 
@@ -42,15 +43,15 @@ ftl-server命令的选项不多，可以通过`ftl-server help`查看帮助
 
 ```js
 module.exports = {
-  public: 'E:\\20150228-origin-2\\20150228-origin-2\\apache',
+  public: 'E:\\somedir\\public',
   port: '80',
   hot: true,
   ftl: {
-    base: 'E:\\20150228-origin-2\\20150228-origin-2\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl',
+    base: 'E:\\somedir\\ftl',
     global: {
 
     },
-    'productDetail_000008_new.ftl': function(req, res) {
+    'ftlfile.ftl': function(req, res) {
       return {
         saleActivityMap: {
           "000008": {
@@ -62,7 +63,7 @@ module.exports = {
 
   },
   mock: [{
-    url: '/request',
+    path: '/request',
     method: 'get',
     status: '200',
     header: {
@@ -85,17 +86,17 @@ module.exports = {
 
 ### 全局配置字段
 
-* `public` 静态文件目录, 可以是一字符串，或者数组以指定多个静态目录
+* `public` 静态文件目录，可以是一字符串，或者数组以指定多个静态目录
 * `port` 本地服务端口
-* `hot` 开启livereload， 值为true
+* `hot` 开启livereload，值为true
 
 ### ftl
 
-`ftl`字段用来配置freemarker的解析，服务起来后访问根目录会列出base目录下的文件列表。
+`ftl` 字段用来配置freemarker的解析，服务起来后访问根目录会列出base目录下的文件列表。
 
-* `base`配置freemarker模板目录
-*  `global`freemarker共享的数据模型，即所有模板都会用到
-* 其他就是特定模板的数据模型，字段的key是模板文件名（不包含目录路径），value可以是对象；也可以是函数且返回一对象（函数的参数是express框架的请求响应对象req，res）
+* `base` 配置freemarker模板目录
+* `global` freemarker共享的数据模型，即所有模板都会用到
+* 其他就是特定模板的数据模型，字段的key是模板文件名（不包含目录路径），value可以是对象；也可以是函数且返回一对象（函数的参数是express中间件req，res）
 
 
 
@@ -103,7 +104,7 @@ module.exports = {
 
 ### mock
 
-`mock`字段配置接口模拟，值是一数组，数组中的每个对象表示模拟一个请求。
+`mock` 字段配置接口模拟，值是一数组，数组中的每个对象表示模拟一个请求。
 
 * `path` 请求的path, 本来应该是严格的路由path(不包含querystring), 如果提供除path外的url的其他部分则会忽略。原来这个字段叫`url`,已废弃
 * `method` 请求的方法，get/post等等,默认get
@@ -118,7 +119,7 @@ module.exports = {
 
 ### proxy
 
-`proxy`字段配置反向代理，也是一数组，数组每个对象表示一个反向代理的配置。该配置有一个规则：即，**实际访问的路径除去配置中的path后的路径，会添加到target后面，成为代理请求的路径。** 这样说可能不清楚，举个例子： 
+`proxy` 字段配置反向代理，也是一数组，数组每个对象表示一个反向代理的配置。该配置有一个规则：即，**实际访问的路径除去配置中的path后的路径，会添加到target后面，成为代理请求的路径。** 这样说可能不清楚，举个例子： 
 
 ```js
 {

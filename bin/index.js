@@ -16,7 +16,7 @@ fs.watchFile(configPath, { interval: 2000 }, function(curr, prev) {
 
 function forkApp() {
     child = fork(path.join(__dirname, '..', 'app'), process.argv.slice(2));
-    child.on('exit', function(code) {
+    child.once('exit', function exitHander(code) {
         if (code === null) {
             child = forkApp();
         } else if (code === 1) {
