@@ -1,18 +1,23 @@
 #!/usr/bin/env node
 
-var configPath = require('../lib/config').configPath;
+var config = require('../lib/config');
 var fs = require('fs');
 var fork = require('child_process').fork;
 var path = require('path');
 
 var child = forkApp();
 
-//检测文件变化
-fs.watchFile(configPath, { interval: 2000 }, function(curr, prev) {
-    if (curr.mtime !== prev.mtine) {
-        child && child.kill();
-    }
-})
+var watchFiles = (config.watch || []).concat(config.configPath);
+
+watchFiles.forEach(function(file) {
+    var filePath = path.resolve(path.dirname(config.configPath), file);
+    //检测文件变化
+    fs.watchFile(filePath, { interval: 2000 }, function(curr, prev) {
+        if (curr.mtime !== prev.mtine) {
+            child && child.kill();
+        }
+    })
+});
 
 function forkApp() {
     child = fork(path.join(__dirname, '..', 'app'), process.argv.slice(2));

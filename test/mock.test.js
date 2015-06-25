@@ -71,7 +71,7 @@ describe('mock', function() {
                 done(err);
             });
     });
-    
+
     it('should success mock when given config path is a full href', function(done) {
         request.get('/mock/url')
             .type('text')

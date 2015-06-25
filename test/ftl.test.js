@@ -21,18 +21,18 @@ describe('ftl render test:', function() {
     it('render a ftl for a function response', function(done) {
         request.get('/test1.ftl')
             .expect('Content-Type', 'text/html; charset=utf-8')
-            .expect('cjmtest1', done);
+            .expect('cjmtest1<script async defer src="/ftl-server/live-client.js"></script>', done);
     });
 
     it('render a ftl for a object response', function(done) {
         request.get('/test2.ftl')
             .expect('Content-Type', 'text/html; charset=utf-8')
-            .expect('cjmtest2', done);
+            .expect('cjmtest2<script async defer src="/ftl-server/live-client.js"></script>', done);
     });
 
     it('get a file not end with .ftl', function(done) {
         request.get('/file.js')
             .expect('file.js', done);
     });
-   
+
 });

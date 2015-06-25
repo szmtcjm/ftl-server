@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/szmtcjm/ftl-server.svg?branch=master)](https://travis-ci.org/szmtcjm/ftl-server)
 
-ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后端接口，反向代理等功能。 
+ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后端接口，反向代理等功能。
 
 ## 特性
 
@@ -20,12 +20,12 @@ npm install ftl-server -g
 ## 使用
 
 ```bash
-ftl-server -c ./config.js -p 8080 
+ftl-server -c ./config.js -p 8080
 ```
-or 
+or
 
 ```bash
-fs -c ./config.js -p 8080 
+fs -c ./config.js -p 8080
 ```
 
 ftl-server命令的选项不多，可以通过`ftl-server help`查看帮助
@@ -46,6 +46,7 @@ module.exports = {
   public: 'E:\\somedir\\public',
   port: '80',
   hot: true,
+  watch: [require.resolve('./page.ftl'), './page.mock'],
   ftl: {
     base: 'E:\\somedir\\ftl',
     global: {
@@ -79,7 +80,7 @@ module.exports = {
   proxy: [{
     path: '/proxy1',
     target: 'http://localhost:3000'
-    } 
+    }
   ]
 }
 ```
@@ -89,6 +90,7 @@ module.exports = {
 * `public` 静态文件目录，可以是一字符串，或者数组以指定多个静态目录
 * `port` 本地服务端口
 * `hot` 开启livereload，值为true
+* `watch` 需要监控的额外的配置文件，值为数组。比如watch: ['./page.ftl', './page.mock']，可以是绝对路径或相对路劲，相对路径相对于主配置文件(比如:ftl.config.js)
 
 ### ftl
 
@@ -119,7 +121,7 @@ module.exports = {
 
 ### proxy
 
-`proxy` 字段配置反向代理，也是一数组，数组每个对象表示一个反向代理的配置。该配置有一个规则：即，**实际访问的路径除去配置中的path后的路径，会添加到target后面，成为代理请求的路径。** 这样说可能不清楚，举个例子： 
+`proxy` 字段配置反向代理，也是一数组，数组每个对象表示一个反向代理的配置。该配置有一个规则：即，**实际访问的路径除去配置中的path后的路径，会添加到target后面，成为代理请求的路径。** 这样说可能不清楚，举个例子：
 
 ```js
 {
