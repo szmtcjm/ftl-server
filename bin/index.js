@@ -16,7 +16,7 @@ watchFiles.forEach(function(file) {
         if (curr.mtime !== prev.mtine) {
             child && child.kill();
         }
-    })
+    });
 });
 
 function forkApp() {
