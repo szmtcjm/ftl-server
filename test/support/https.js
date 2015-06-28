@@ -2,8 +2,8 @@ var https = require('https');
 var fs = require("fs");
 var path_join = require('path').join;
 var options = {
-    key: fs.readFileSync(path_join(__dirname, './privatekey.pem')),
-    cert: fs.readFileSync(path_join(__dirname, './certificate.pem'))
+    key: fs.readFileSync(path_join(__dirname, '../../https/privatekey.pem')),
+    cert: fs.readFileSync(path_join(__dirname, '../../https/certificate.pem'))
 };
 
 var server;

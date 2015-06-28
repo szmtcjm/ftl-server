@@ -8,8 +8,8 @@ var httpsApp = require('./support/https.js');
 var redirect = require('./support/redirect.js');
 
 describe('proxy test', function() {
-    describe('proxy test:http-GET', function() {
-        
+    describe('proxy test:http->http:GET', function() {
+
         before(function() {
             httpApp.startForGET();
         });
@@ -128,7 +128,7 @@ describe('proxy test', function() {
 
     });
 
-    describe('proxy test:http-POST', function() {
+    describe('proxy test:http->http:POST', function() {
         before(function() {
             httpApp.startForPOST();
         });
@@ -149,7 +149,7 @@ describe('proxy test', function() {
     });
 
 
-    describe('proxy test:https--GET', function() {
+    describe('proxy test:http->https:GET', function() {
         before(function() {
             httpsApp.startForGET();
         });
@@ -168,7 +168,7 @@ describe('proxy test', function() {
         });
     });
 
-    describe('proxy test:https--POST', function() {
+    describe('proxy test:http->https:POST', function() {
         before(function() {
             httpsApp.startForPOST();
         });
@@ -187,6 +187,22 @@ describe('proxy test', function() {
                 });
         });
     });
+
+    describe('proxy test:https->http:GET', function() {
+        before(function() {
+            httpApp.startForGET();
+        });
+
+        after(function() {
+            httpApp.stop();
+        });
+
+        it('should success return when GET /proxy1', function(done) {
+            request.get('/proxy1')
+                .expect(200)
+                .expect('/', done);
+        });
+    })
 
     describe('redirect', function() {
         before(function() {

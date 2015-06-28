@@ -3,9 +3,19 @@ var path = require('path');
 var http = require('http');
 var logger = require('morgan');
 var config = require('./lib/config');
+var path = require('path');
 
 var app = express();
-var server = http.createServer(app);
+var server;
+if (config.https) {
+    var options = {
+        key: fs.readFileSync(path.join(__dirname, 'https', 'privatekey.pem')),
+        cert: fs.readFileSync(path.join(__dirname, 'https', 'certificate.pem'))
+    };
+    server = https.createServer(options, app);
+} else {
+    server = http.createServer(app);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,7 +28,7 @@ app.use(require('./lib/live')(server));
 // 静态资源
 app.use(require('./lib/static'));
 //反向代理
-app.use(require('./lib/proxy')); 
+app.use(require('./lib/proxy'));
 //ftl渲染
 app.use(require('./lib/ftl'));
 // api mock
