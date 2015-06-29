@@ -1,21 +1,24 @@
 var express = require('express');
 var path = require('path');
-var http = require('http');
 var logger = require('morgan');
 var config = require('./lib/config');
 var path = require('path');
+var fs = require('fs');
 
 var app = express();
 var server;
 if (config.https) {
+    var https = require('https');
     var options = {
         key: fs.readFileSync(path.join(__dirname, 'https', 'privatekey.pem')),
         cert: fs.readFileSync(path.join(__dirname, 'https', 'certificate.pem'))
     };
     server = https.createServer(options, app);
 } else {
+    var http = require('http');
     server = http.createServer(app);
 }
+app.server = server;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -102,7 +105,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('Start ftl-server listening on ' + bind);
+  console.log('Start ftl-server listening on ' + bind + ' with ' + (config.https ? 'https' : 'http'));
 }
 
 module.exports = app;

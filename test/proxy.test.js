@@ -188,22 +188,6 @@ describe('proxy test', function() {
         });
     });
 
-    describe('proxy test:https->http:GET', function() {
-        before(function() {
-            httpApp.startForGET();
-        });
-
-        after(function() {
-            httpApp.stop();
-        });
-
-        it('should success return when GET /proxy1', function(done) {
-            request.get('/proxy1')
-                .expect(200)
-                .expect('/', done);
-        });
-    })
-
     describe('redirect', function() {
         before(function() {
             redirect.start();

@@ -2,7 +2,7 @@ var path_join = require('path').join;
 
 exports = module.exports = {
     public: path_join(__dirname, '..', 'public'),
-    port: '80',
+    port: '8000',
     hot: true,
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
