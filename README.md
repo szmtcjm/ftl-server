@@ -22,7 +22,7 @@ npm install ftl-server -g
 ```bash
 ftl-server -c ./config.js -p 8080
 ```
-or
+或者
 
 ```bash
 fs -c ./config.js -p 8080
@@ -34,6 +34,7 @@ ftl-server命令的选项不多，可以通过`ftl-server help`查看帮助
 * `-p, --port` 服务的端口，默认8000
 * `-l, --log` 配置打印日志，指定要显示的日志，可以指定多个。比如`-l mock proxy error`表示只显示mock，proxy和error日志。默认为`-l all`，表示显示所有日志
 * `--hot` 开启livereload；开启后修改css会自动更新页面的样式，修改ftl/js/图片等会自动刷新页面
+* `--https` 启动https服务，默认是http服务。需要注意的是浏览器的https的默认端口是443，所以如果需要用浏览器默认端口访问，则配置端口为443，而不是80
 * `-h, --help` 帮助
 * `-v, --version` 显示版本号
 
@@ -91,6 +92,7 @@ module.exports = {
 * `port` 本地服务端口
 * `hot` 开启livereload，值为true
 * `watch` 需要监控的额外的配置文件，值为数组。比如watch: ['./page.ftl', './page.mock']，可以是绝对路径或相对路劲，相对路径相对于主配置文件(比如:ftl.config.js)
+* `https` 启动https服务，值为true
 
 ### ftl
 

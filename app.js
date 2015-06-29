@@ -105,7 +105,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('Start ftl-server listening on ' + bind + ' with ' + (config.https ? 'https' : 'http'));
+  console.log('\u001b[36mftl-server start listening on ' + bind + ' with ' + (config.https ? 'https' : 'http') + '\u001b[39m');
 }
 
 module.exports = app;
