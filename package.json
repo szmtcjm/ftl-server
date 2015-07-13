@@ -51,6 +51,7 @@
   "files": [
     "bin/",
     "lib/",
+    "https/",
     "views/",
     "app.js",
     "README.md"
