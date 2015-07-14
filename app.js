@@ -36,6 +36,8 @@ app.use(require('./lib/proxy'));
 app.use(require('./lib/ftl'));
 // api mock
 app.use(require('./lib/mock'));
+// js-build
+app.use(require('./lib/build')());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -18,6 +18,12 @@ exports = module.exports = {
             test2: 'test2'
         }
     },
+    build: {
+        js: {
+            entry: [],
+            dest:[]
+        }
+    }
     mock: [{
             path: '/mock/json',
             method: 'get',
