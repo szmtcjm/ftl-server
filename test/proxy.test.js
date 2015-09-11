@@ -1,3 +1,4 @@
+require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var app = require('../app');

@@ -1,3 +1,4 @@
+require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var httpApp = require('./support/http.js');
@@ -16,7 +17,9 @@ describe('https', function() {
         var config = require('../lib/config');
         config.https = true;
         config.port = 8001;
-
+        config.remoteDebug = {
+            httpPort: 10000
+        };
         newApp = require('../app');
         request = supertest(newApp);
     });

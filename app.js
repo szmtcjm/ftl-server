@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
 var config = require('./lib/config');
 var path = require('path');
 var fs = require('fs');
@@ -25,9 +24,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // 日志
-app.use(require('./lib/logger'));
+app.use(require('./lib/logger').logger);
 // live reload
 app.use(require('./lib/live')(server));
+// weinre
+app.use(require('./lib/weinre')());
 // 静态资源
 app.use(require('./lib/static'));
 //反向代理
@@ -36,6 +37,7 @@ app.use(require('./lib/proxy'));
 app.use(require('./lib/ftl'));
 // api mock
 app.use(require('./lib/mock'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

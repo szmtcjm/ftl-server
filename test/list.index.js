@@ -1,3 +1,4 @@
+require('./slientLog.js');
 var list = require('../lib/list');
 var path = require('path');
 var expect = require('expect.js');
@@ -9,7 +10,7 @@ describe('test/list.index.js', function() {
         }, function(err) {
             expect(err.code).to.be('ENOENT');
         });
-    }); 
+    });
 
     it('dir will be dir/, file will be file', function() {
         return list(path.join(__dirname, 'fixtures/dir')).then(function(res) {

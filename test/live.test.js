@@ -1,5 +1,6 @@
 /// <reference path="../typings/node/node.d.ts"/>
 /// <reference path="../typings/mocha/mocha.d.ts"/>
+require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var app = require('../app');
@@ -16,16 +17,16 @@ describe('livereload', function() {
 			.expect('Content-Type', 'application/javascript')
 			.end(done);
 	});
-	
+
 	it('html response should contain client script tag', function(done) {
 		function containClientScript(res) {
-			expect(res.text).to.contain('<script async defer src="/ftl-server/live-client.js"></script></head>');
+			expect(res.text).to.contain('<script async defer src="/ftl-server/live-client.js"></script>');
 		}
 		request.get('/test4.ftl')
 			.expect(containClientScript)
 			.end(done);
 	});
-	
+
 	it('should receive message when ftl change', function(done) {
 		var ws = new WebSocket('ws://localhost:8000');
 		ws.on('message', function(data) {
@@ -38,7 +39,7 @@ describe('livereload', function() {
 			fs.writeFileSync(join(__dirname, 'fixtures', 'ftl', 'change.ftl'), 'c');
 		});
 	});
-	
+
 	it('should receive message when js/css... change', function(done) {
 		var ws = new WebSocket('ws://localhost:8000');
 		ws.on('message', function(data) {
