@@ -11,6 +11,7 @@ ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后�
 * mock请求
 * 代理请求
 * livereload
+* weinre
 
 ## 安装
 
@@ -48,6 +49,9 @@ module.exports = {
   port: '80',
   hot: true,
   watch: [require.resolve('./page.ftl'), './page.mock'],
+  remoteDebug: {
+    browser: 'firefox'
+  },
   ftl: {
     base: 'E:\\somedir\\ftl',
     global: {
@@ -93,6 +97,9 @@ module.exports = {
 * `hot` 开启livereload，值为true
 * `watch` 需要监控的额外的配置文件，值为数组。比如watch: ['./page.ftl', './page.mock']，可以是绝对路径或相对路劲，相对路径相对于主配置文件(比如:ftl.config.js)
 * `https` 启动https服务，值为true
+* `remoteDebug`  针对weinre的配置。该值若为true，表示开启weinre，并使用默认配置；或者为object，
+key支持[weinre的所有配置字段](http://people.apache.org/~pmuellr/weinre-docs/latest/Running.html)。
+还有一个key: `browser`，表示打开weinre client的浏览器，默认是chrome。还有目前weinre(20150911)是不支持https的，但是ftl-server使用proxy来支持https。
 
 ### ftl
 
