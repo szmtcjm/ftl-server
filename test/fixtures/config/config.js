@@ -4,7 +4,9 @@ exports = module.exports = {
     public: path_join(__dirname, '..', 'public'),
     port: '8000',
     hot: true,
-    remoteDebug: true,
+    remoteDebug: {
+        httpPort: 8089
+    },
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
         global: {
