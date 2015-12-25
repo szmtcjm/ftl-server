@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "0.10"
   - "0.12"
-  - "1.0"
-  - "1.5"
+  - "4.0"
+  - "4.2"
 script: "npm run-script test"
