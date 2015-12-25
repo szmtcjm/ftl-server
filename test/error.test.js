@@ -1,4 +1,3 @@
-require('./slientLog.js');
 var config = require('../lib/config');
 var expect = require('expect.js');
 var supertest = require('supertest');

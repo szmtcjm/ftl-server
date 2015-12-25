@@ -1,6 +1,3 @@
-/// <reference path="../typings/node/node.d.ts"/>
-/// <reference path="../typings/mocha/mocha.d.ts"/>
-require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var app = require('../app');

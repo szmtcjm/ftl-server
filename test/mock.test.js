@@ -1,4 +1,3 @@
-require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var app = require('../app');
@@ -81,5 +80,32 @@ describe('mock', function() {
                 expect(res.text).to.be('success');
             })
             .end(done);
+    });
+
+    it('/mock/mockFile1', function(done) {
+        request.get('/mock/mockFile1')
+            .expect('Content-Type', 'application/json; charset=utf-8')
+            .end(function(err, res) {
+                var json = JSON.parse(res.text);
+                expect(json).to.eql({test: 'mockFile1'});
+                done(err);
+            });
+    });
+
+    it('/mock/error/delay', function(done) {
+        request.get('/mock/error/delay')
+            .expect(500)
+            .end(function(err, res) {
+                expect(res.text).to.contain('mock.delay must a number');
+                done();
+            });
+    });
+    it('/mock/error/jsonp/delay', function(done) {
+        request.get('/mock/error/jsonp/delay')
+            .expect(500)
+            .end(function(err, res) {
+                expect(res.text).to.contain('mock.delay must a number');
+                done();
+            });
     });
 });

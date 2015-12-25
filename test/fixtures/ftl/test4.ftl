@@ -5,6 +5,6 @@
 	<title>test ftl</title>
 </head>
 <body>
-	${global}
+	${ftlDataFile1}
 </body>
 </html>

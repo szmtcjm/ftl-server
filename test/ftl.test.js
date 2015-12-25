@@ -1,4 +1,3 @@
-require('./slientLog.js');
 var supertest = require('supertest');
 var expect = require('expect.js');
 var app = require('../app');
@@ -31,9 +30,16 @@ describe('ftl render test:', function() {
             .expect(/cjmtest2/, done);
     });
 
+    it('render a ftl for config.ftl.dataFiles field', function(done) {
+        request.get('/test4.ftl')
+            .expect('Content-Type', 'text/html; charset=utf-8')
+            .expect(/ftlDataFile1/, done);
+    });
+
     it('get a file not end with .ftl', function(done) {
         request.get('/file.js')
             .expect('file.js', done);
     });
+
 
 });
