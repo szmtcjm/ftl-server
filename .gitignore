@@ -1,12 +1,9 @@
 node_modules/
 npm-debug.log
-
 .idea/
-
 coverage
-
-typings
-
 *~
-
 leakCheck.js
+
+#Visual Studio Code
+typings

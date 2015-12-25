@@ -1,4 +1,3 @@
-require('./slientLog.js');
 var list = require('../lib/list');
 var path = require('path');
 var expect = require('expect.js');

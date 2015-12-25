@@ -4,9 +4,13 @@ exports = module.exports = {
     public: path_join(__dirname, '..', 'public'),
     port: '8000',
     hot: true,
-    remoteDebug: true,
+    log: ['none'],
+    remoteDebug: {
+        httpPort: 8089
+    },
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
+        dataFiles: [path_join(__dirname, '..', 'ftl', 'ftlDataFile1.ftl')],
         global: {
             'global': 'cjm'
         },
@@ -78,7 +82,7 @@ exports = module.exports = {
         }, {
             path: 'https://baidu.com/mock/url?a=1',
             response: 'success'
-        }]
+        }, path_join(__dirname, '..', 'mock', 'mock1.js'), path_join(__dirname, '..', 'mock', 'mock2.js')]
 }
 
 exports.proxy = [];
