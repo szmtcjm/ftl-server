@@ -6,7 +6,8 @@ exports = module.exports = {
     hot: true,
     log: ['none'],
     remoteDebug: {
-        httpPort: 8089
+        httpPort: 8089,
+        browser: null
     },
     ftl: {
         base: path_join(__dirname, '..', 'ftl'),
