@@ -144,7 +144,7 @@ module.exports = {
 如果值是路径，则路径的文件为一export出mock数据，实例文件如下
 ```js
 // /dir/mock.js
-// 可以export一数据，或者直接一对象
+// 可以export一数组，或者直接一对象
 module.exports = [{
   path: '/mock',
   method: 'post',
