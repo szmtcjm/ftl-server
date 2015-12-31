@@ -83,7 +83,21 @@ exports = module.exports = {
         }, {
             path: 'https://baidu.com/mock/url?a=1',
             response: 'success'
-        }, path_join(__dirname, '..', 'mock', 'mock1.js'), path_join(__dirname, '..', 'mock', 'mock2.js')]
+        }, path_join(__dirname, '..', 'mock', 'mock1.js'), path_join(__dirname, '..', 'mock', 'mock2.js')],
+        projects:{
+            diana:[
+                ['',''],
+                ""
+            ],
+            athena:[
+                [''],
+                ""
+            ],
+            ares:[
+                [''],
+                ""
+            ]
+        }
 }
 
 exports.proxy = [];
