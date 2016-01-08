@@ -205,4 +205,19 @@ describe('proxy test', function() {
                 });
         });
     });
+    
+    describe('default proxy', function () {
+        it('/m/f', function (done) {
+            request.get('/m/f/proxy.js')
+                .expect(200, done);
+        });
+        it('/a/p', function (done) {
+            request.get('/a/p/proxy.js')
+                .expect(200, done);
+        });
+        it('/a/f', function (done) {
+            request.get('/a/f/proxy.js')
+                .expect(200, done);
+        });
+    });
 });
