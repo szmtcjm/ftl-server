@@ -83,7 +83,21 @@ exports = module.exports = {
         }, {
             path: 'https://baidu.com/mock/url?a=1',
             response: 'success'
-        }, path_join(__dirname, '..', 'mock', 'mock1.js'), path_join(__dirname, '..', 'mock', 'mock2.js')]
+        }, path_join(__dirname, '..', 'mock', 'mock1.js'), path_join(__dirname, '..', 'mock', 'mock2.js')],
+        projects:{
+            diana:[
+                ["E:\\diana\\apache","E:\\epay-fund-m\\epay-fund-m\\dev"],
+                "E:\\diana\\diana-web\\src\\main\\webapp\\WEB-INF\\ftl\\mobile"
+            ],
+            athena:[
+                ["E:\\athena\\apache","E:\\epayfund\\epay-fund"],
+                "E:\\athena\\fund-web\\src\\main\\webapp\\WEB-INF\\ftl"
+            ],
+            ares:[
+                ["E:\\ares\\apache"],
+                "E:\\ares\\ares-web\\src\\main\\webapp\\WEB-INF\\ftl"
+            ]
+        }
 }
 
 exports.proxy = [];
