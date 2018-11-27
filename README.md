@@ -13,6 +13,7 @@ ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后�
 * 代理请求
 * livereload
 * weinre
+* 自定义路由配置
 
 ## 安装
 
@@ -54,6 +55,9 @@ module.exports = {
     browser: 'firefox'
   },
   ftl: {
+    urlMap: { 
+        '/': '/test1'
+    },
     base: 'E:\\somedir\\ftl',
     dataFiles: ['E:\\somedir\\data.ftl'],
     global: {
@@ -106,7 +110,7 @@ key支持[weinre的所有配置字段](http://people.apache.org/~pmuellr/weinre-
 ### ftl
 
 `ftl` 字段用来配置freemarker的解析，服务起来后访问根目录会列出base目录下的文件列表。
-
+* `urlMap` 配置自定义路由
 * `base` 配置freemarker模板目录
 * `global` freemarker共享的数据模型，即所有模板都会用到
 * `dataFiles` 值为数组。表示引入单独的ftl数据模型文件，文件实例如下：
