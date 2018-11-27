@@ -1,5 +1,5 @@
 {
-  "name": "ftl-server",
+  "name": "ftl-server-xmllein",
   "version": "1.0.1",
   "description": "A tool for front end developers, which can parse freemarker template, mock api, reverse proxy. And it support live reload",
   "preferGlobal": true,
@@ -11,7 +11,7 @@
     "tool",
     "livereload"
   ],
-  "bugs": "http://github.com/szmtcjm/ftl-server/issues",
+  "bugs": "http://github.com/xmllein/ftl-server/issues",
   "license": "MIT",
   "main": "./bin/index.js",
   "bin": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/szmtcjm/ftl-server"
+    "url": "https://github.com/xmllein/ftl-server"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec -r test/support/argv.js",
