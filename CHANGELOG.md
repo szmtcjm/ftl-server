@@ -1,4 +1,4 @@
-# ftl-server 1.0.2 ( Nov 28, 2018)
+# ftl-server 1.1.0 ( Nov 28, 2018)
 * 更新freemarker为2.3.28
 * 添加自定义路由配置
 # ftl-server 1.0.1 (Jan 8, 2016)
