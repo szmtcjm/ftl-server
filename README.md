@@ -180,7 +180,7 @@ module.exports = [{
 * `target` 表示代理的目标地址
 * `host` 自定义请求`target`时请求头中的host字段，默认是`target`代表的host
 
-## [CHANGELOG](https://github.com/szmtcjm/ftl-server/blob/master/CHANGELOG.md)
+## [CHANGELOG](https://github.com/xmllein/ftl-server/blob/master/CHANGELOG.md)
 ## License
 
 MIT
