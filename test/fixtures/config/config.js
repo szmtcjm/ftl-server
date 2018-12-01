@@ -11,7 +11,7 @@ exports = module.exports = {
   },
   ftl: {
     urlMap: { //自定义路由，更好模拟这是项目真实环境
-      '/': '/test1'
+      '/': '/index'
     },
     base: path_join(__dirname, '..', 'ftl'),
     dataFiles: [path_join(__dirname, '..', 'ftl', 'ftlDataFile1.ftl')],
