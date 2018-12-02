@@ -52,12 +52,12 @@
     "supertest": "^0.15.0"
   },
   "files": [
+    "./app.js",
     "bin/",
     "lib/",
     "https/",
     "views/",
-    "app.js",
-    "README.md"
+    "readme.md"
   ],
   "author": {
     "name": "Chen jiangming",
