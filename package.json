@@ -52,11 +52,11 @@
     "supertest": "^0.15.0"
   },
   "files": [
-    "app.js",
     "bin/",
     "lib/",
     "https/",
     "views/",
+    "app.js",
     "readme.md"
   ],
   "author": {
