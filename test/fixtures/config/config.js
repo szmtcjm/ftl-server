@@ -10,7 +10,7 @@ exports = module.exports = {
     browser: null
   },
   ftl: {
-    urlMap: { //自定义路由，更好模拟这是项目真实环境
+    urlMaps: { //自定义路由，更好模拟这是项目真实环境
       '/': '/index'
     },
     base: path_join(__dirname, '..', 'ftl'),
