@@ -13,6 +13,7 @@ ftl-server 是一前端开发工具，支持解析freemarker模板，模拟后�
 * 代理请求
 * livereload
 * weinre
+* 自定义路由配置
 
 ## 安装
 
@@ -53,7 +54,11 @@ module.exports = {
   remoteDebug: {
     browser: 'firefox'
   },
+  urlMap:false, //默认不开启
   ftl: {
+    urlMaps: { 
+        '/': '/index'  //需要开启urlMap生效,例如: 对应访问index.ftl
+    },
     base: 'E:\\somedir\\ftl',
     dataFiles: ['E:\\somedir\\data.ftl'],
     global: {
@@ -97,6 +102,7 @@ module.exports = {
 * `public` 静态文件目录，可以是一字符串，或者数组以指定多个静态目录
 * `port` 本地服务端口
 * `hot` 开启livereload，值为boolean
+* `urlMap` 是否开启urlMap，值为boolean，默认不开启
 * `watch` 需要监控的额外的配置文件，值为数组。比如watch: ['./page.ftl', './page.mock']，可以是绝对路径或相对路劲，相对路径相对于主配置文件(比如:ftl.config.js)
 * `https` 启动https服务，值为boolean, 开启后默认端口为443
 * `remoteDebug`  针对weinre的配置。该值若为true，表示开启weinre，并使用默认配置；或者为object，
@@ -106,7 +112,7 @@ key支持[weinre的所有配置字段](http://people.apache.org/~pmuellr/weinre-
 ### ftl
 
 `ftl` 字段用来配置freemarker的解析，服务起来后访问根目录会列出base目录下的文件列表。
-
+* `urlMaps` 配置自定义路由,值为对象
 * `base` 配置freemarker模板目录
 * `global` freemarker共享的数据模型，即所有模板都会用到
 * `dataFiles` 值为数组。表示引入单独的ftl数据模型文件，文件实例如下：
@@ -176,7 +182,7 @@ module.exports = [{
 * `target` 表示代理的目标地址
 * `host` 自定义请求`target`时请求头中的host字段，默认是`target`代表的host
 
-## [CHANGELOG](https://github.com/szmtcjm/ftl-server/blob/master/CHANGELOG.md)
+## [CHANGELOG](https://github.com/xmllein/ftl-server/blob/master/CHANGELOG.md)
 ## License
 
 MIT

@@ -1,3 +1,8 @@
+# ftl-server 1.1.1 ( Dec 1, 2018)
+* 添加全局urlMap配置参数，默认不开启
+# ftl-server 1.1.0 ( Nov 28, 2018)
+* 更新freemarker为2.3.28
+* 添加自定义路由配置
 # ftl-server 1.0.1 (Jan 8, 2016)
 * 修复默认代理的问题
 * 修复不配置mock异常退出问题
